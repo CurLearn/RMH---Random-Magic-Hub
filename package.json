@@ -1,0 +1,19 @@
+{
+  "name": "rmh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CurLearn/RMH---Random-Magic-Hub.git"
+  },
+  "author": "CurLearn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CurLearn/RMH---Random-Magic-Hub/issues"
+  },
+  "homepage": "https://github.com/CurLearn/RMH---Random-Magic-Hub#readme"
+}
