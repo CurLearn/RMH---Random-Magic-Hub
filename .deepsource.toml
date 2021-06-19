@@ -1,9 +1,6 @@
 version = 1
 
-exclude_patterns = [
-    "uuid.js",
-    "node_modules"
-]
+test_patterns = ["globals\\js\\uuid.js"]
 
 [[analyzers]]
 name = "javascript"
