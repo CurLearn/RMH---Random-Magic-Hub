@@ -1,0 +1,33 @@
+pre {
+    outline: 1px solid #ccc;
+    padding: 5px;
+    margin:
+        5px;
+}
+
+.string {
+    color: #008000;
+}
+
+.number {
+    color: #0000ff;
+}
+
+.boolean {
+    color: #b22222;
+}
+
+.null {
+    color: #808080;
+}
+
+.key {
+    color: #000000;
+}
+
+#jsonarea {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: left;
+}
