@@ -1,2 +1,2 @@
 // jshint esversion: 6
-global.window.uuid = require('uuid').v4;
+global.window.uuid = require("uuid").v4;

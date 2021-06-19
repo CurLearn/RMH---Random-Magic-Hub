@@ -10,9 +10,9 @@ import {
 
 $("body").find("*").each(async function() {
     let tag = $(this).prop("tagName");
-    if (tag == "INPUT")
-        $(this).prop('title', $(this).attr("class"));
-    $(this).on('input', 'input:text', function() {
+    if (tag === "INPUT")
+        $(this).prop("title", $(this).attr("class"));
+    $(this).on("input", "input:text", function() {
         startScanJSON();
     });
 });
@@ -26,14 +26,18 @@ $("#jsoncopy").click(function() {
 // Append a value to the json object
 async function appendValue(s, path) {
     // Check if root is initialized
-    if (typeof json[s.id] == "undefined")
+    if (typeof json[s.id] == "undefined") {
         json[s.id] = {};
+    }
 
     // Check if paths are initialized
-    for (const key in path)
-        if (Object.hasOwnProperty.call(path, key))
-            if (typeof path[key] == "undefined")
+    for (const key in path) {
+        if (Object.hasOwnProperty.call(path, key)) {
+            if (typeof path[key] == "undefined") {
                 path[key] = {};
+            }
+        }
+    }
 
     // Pre-Process the data
     let append = s.value;
@@ -69,7 +73,7 @@ async function appendValue(s, path) {
 // Scans for json-addable objects in an object tree
 async function scanJSON(s, path = []) {
     let tag = $(s).get(0).tagName;
-    if (tag != "INPUT" && tag != "DIV") {
+    if (tag != "INPUT" && tag !== "DIV") {
         return;
     }
 

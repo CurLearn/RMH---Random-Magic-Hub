@@ -8,7 +8,7 @@ export const jsonDisplay = {
     jsonstring: "",
     outputDivID: "",
 
-    outputPretty: function(jsonstring) {
+    outputPretty(jsonstring) {
         jsonstring = jsonstring === '' ? jsonDisplay.jsonstring : jsonstring;
         var pretty = JSON.stringify(JSON.parse(jsonstring), null, 2);
         var shpretty = jsonDisplay.syntaxHighlight(pretty);
@@ -22,9 +22,9 @@ export const jsonDisplay = {
         document.getElementById(jsonDisplay.outputDivID).appendChild(newDiv);
     },
 
-    syntaxHighlight: function(json) {
+    syntaxHighlight(json) {
 
-        if (typeof json != 'string') {
+        if (typeof json != "string") {
             json = JSON.stringify(json, undefined, 2);
         }
 
@@ -42,7 +42,7 @@ export const jsonDisplay = {
             } else if (/null/.test(match)) {
                 cls = "null";
             }
-            return '<span class="' + cls + '">' + match + '</span>';
+            return "<span class=\"" + cls + "\">" + match + "</span>";
         });
     }
 };

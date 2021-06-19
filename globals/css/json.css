@@ -1,8 +1,7 @@
 pre {
     outline: 1px solid #ccc;
     padding: 5px;
-    margin:
-        5px;
+    margin: 5px;
 }
 
 .string {
@@ -22,7 +21,7 @@ pre {
 }
 
 .key {
-    color: #000000;
+    color: #000;
 }
 
 #jsonarea {
