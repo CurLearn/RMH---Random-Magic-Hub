@@ -1,5 +1,5 @@
 # RMH---Random-Magic-Hub
-## using:
+## using
 - "browserify"
 - "uuid"
 
