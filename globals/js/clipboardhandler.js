@@ -13,9 +13,10 @@ export function fallbackCopyTextToClipboard(text) {
     textArea.select();
 
     try {
-        var successful = document.execCommand('copy');
-        var msg = successful ? 'successful' : 'unsuccessful';
+        var successful = document.execCommand("copy");
+        var msg = successful ? "successful" : "unsuccessful";
     } catch (err) {
+        // Ignore Error
     }
 
     document.body.removeChild(textArea);

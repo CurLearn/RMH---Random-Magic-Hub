@@ -27,9 +27,12 @@ const inject = '<!--Navbar--> <div class=\"navbar\"> <a href=\"\/index.html\" id
 document.getElementsByTagName("BODY")[0].insertAdjacentHTML('afterbegin', inject);
 
 const path = window.location.pathname.toLowerCase();
-if (path.includes("index"))
+if (path.includes("index")) {
     document.getElementById("home").classList.add("active");
-else if (path.includes("projects"))
+}
+else if (path.includes("projects")) {
     document.getElementById("projects").classList.add("active");
-else if (path.includes("about"))
+}
+else if (path.includes("about")) {
     document.getElementById("about").classList.add("active");
+}
