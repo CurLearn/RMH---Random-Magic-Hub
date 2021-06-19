@@ -9,7 +9,7 @@ export const jsonDisplay = {
     outputDivID: "",
 
     outputPretty(jsonstring) {
-        jsonstring = jsonstring === '' ? jsonDisplay.jsonstring : jsonstring;
+        jsonstring = jsonstring === "" ? jsonDisplay.jsonstring : jsonstring;
         var pretty = JSON.stringify(JSON.parse(jsonstring), null, 2);
         var shpretty = jsonDisplay.syntaxHighlight(pretty);
         var newDiv;

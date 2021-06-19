@@ -8,21 +8,6 @@ import {
     copyTextToClipboard
 } from "/globals/js/clipboardhandler.js";
 
-$("body").find("*").each(async function() {
-    let tag = $(this).prop("tagName");
-    if (tag === "INPUT")
-        $(this).prop("title", $(this).attr("class"));
-    $(this).on("input", "input:text", function() {
-        startScanJSON();
-    });
-});
-
-$("#uuid").val(window.uuid());
-$("#jsoncopy").click(function() {
-    startScanJSON();
-    copyTextToClipboard(JSON.stringify(json));
-});
-
 // Append a value to the json object
 async function appendValue(s, path) {
     // Check if root is initialized
@@ -73,11 +58,11 @@ async function appendValue(s, path) {
 // Scans for json-addable objects in an object tree
 async function scanJSON(s, path = []) {
     let tag = $(s).get(0).tagName;
-    if (tag != "INPUT" && tag !== "DIV") {
+    if (tag !== "INPUT" && tag !== "DIV") {
         return;
     }
 
-    if (tag != "DIV") {
+    if (tag !== "DIV") {
         appendValue(s, path);
         path.push(s);
     }
@@ -103,4 +88,24 @@ function startScanJSON() {
     jsonDisplay.outputPretty(JSON.stringify(json));
 }
 
+// Scan on editing of input areas
+$("body").find("*").each(async function() {
+    let tag = $(this).prop("tagName");
+    if (tag === "INPUT") {
+        $(this).prop("title", $(this).attr("class"));
+    }
+
+    $(this).on("input", "input:text", function() {
+        startScanJSON();
+    });
+});
+
+// Initialize HTML Objects.
+$("#uuid").val(window.uuid());
+$("#jsoncopy").click(function() {
+    startScanJSON();
+    copyTextToClipboard(JSON.stringify(json));
+});
+
+// Start scan on Load:
 startScanJSON();
