@@ -90,8 +90,6 @@ async function appendValue(s, path) {
         case 2:
             json[path[0]][path[1]][s.id] = append;
             break;
-        default:
-            console.error("Append out of Bounds");
     }
 }
 
