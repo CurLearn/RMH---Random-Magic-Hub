@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/CurLearn/RMH---Random-Magic-Hub/issues"
   },
-  "homepage": "https://github.com/CurLearn/RMH---Random-Magic-Hub#readme"
+  "homepage": "https://github.com/CurLearn/RMH---Random-Magic-Hub#readme",
+  "dependencies": {
+    "uuid": "npm:null@*"
+  }
 }
