@@ -2,7 +2,8 @@
 var json;
 const growers = document.querySelectorAll(".grow-wrap");
 import {
-    jsonDisplay, jsonDownload
+    jsonDisplay,
+    jsonDownload
 } from "/globals/js/jsonhandler.js";
 import {
     copyTextToClipboard
@@ -105,6 +106,7 @@ $("#uuid").val(window.uuid());
 $("#jsoncopy").click(function() {
     startScanJSON();
     copyTextToClipboard(JSON.stringify(json));
+    alert("Copied JSON Output");
 });
 
 $("#jsondownload").click(function() {
@@ -114,6 +116,7 @@ $("#jsondownload").click(function() {
     } else {
         jsonDownload("unidentified.json", JSON.stringify(json, null, 2));
     }
+    alert("Downloaded JSON Output");
 });
 
 // Start scan on Load:

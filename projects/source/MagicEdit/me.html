@@ -2,49 +2,52 @@
 <html lang="en">
 
 <head>
-    <!--Title-->
-    <title>MagicEdit</title>
+	<!--Title-->
+	<title>MagicEdit</title>
 
-    <!--Fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<!--Fonts-->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <!--Stylesheets-->
-    <link rel="stylesheet" href="/globals/css/navbar.css">
-    <link rel="stylesheet" href="/globals/css/json.css">
+	<!--Stylesheets-->
+	<link rel="stylesheet" href="/globals/css/default.css">
+	<link rel="stylesheet" href="/globals/css/navbar.css">
+	<link rel="stylesheet" href="/globals/css/json.css">
 
-    <!--Meta-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Random Magic Theory's MagicEdit Project.">
+	<!--Meta-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Random Magic Theory's MagicEdit Project.">
 </head>
 
 <body>
-    <!--Container-->
-    <div class="container">
-        <h1>MagicEdit</h1>
-        <p>Version: 0.3a</p>
-        <p>Status: W.I.P.</p>
+	<!--Container-->
+	<div class="container">
+		<h1>MagicEdit</h1>
+		<p>Version: 0.1b</p>
+		<p>Status: W.I.P.</p>
 
-        <form id="form">
-            <br><label>Identifier: </label>
-            <br><input id="indentifier" class="dashed lowercase" placeholder="Indentifier"></input>
-            <br>
-            <br><label>UUID: </label>
-            <br><input id="uuid" placeholder="UUID" readonly></input>
-        </form>
-        <br><button id="jsondownload">Download JSON</button> <button id="jsoncopy">Copy JSON</button>
-        <br>
-        <div id="jsonarea"></div>
-    </div>
+		<form id="form">
+			<br><label>Identifier: </label>
+			<br><input id="indentifier" class="dashed lowercase" placeholder="Indentifier"></input>
+			<br>
+			<br><label>UUID: </label>
+			<br><input id="uuid" placeholder="UUID" readonly></input>
+		</form>
+	</div>
+	<div class="subcontainer">
+		<br><button id="jsondownload">Download JSON</button> <button id="jsoncopy">Copy JSON</button>
+		<br>
+		<div id="jsonarea"></div>
+	</div>
 
-    <!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="/globals/js/uuid.js"></script>
-    <script type="text/javascript" src="/globals/js/navbarinjector.js" async></script>
-    <script type="module" src="/globals/js/jsonhandler.js"></script>
-    <script type="module" src="/globals/js/clipboardhandler.js"></script>
-    <script type="module" src="/projects/locals/js/formhandler.js"></script>
-    <script type="text/javascript" src="js/me.js"></script>
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/globals/js/uuid.js"></script>
+	<script type="text/javascript" src="/globals/js/navbarinjector.js" async></script>
+	<script type="module" src="/globals/js/jsonhandler.js"></script>
+	<script type="module" src="/globals/js/clipboardhandler.js"></script>
+	<script type="module" src="/projects/locals/js/formhandler.js"></script>
+	<script type="text/javascript" src="js/me.js"></script>
 </body>
 
 </html>

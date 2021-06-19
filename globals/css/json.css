@@ -5,23 +5,23 @@ pre {
 }
 
 .string {
-    color: #008000;
+    color: #2bad2b;
 }
 
 .number {
-    color: #00ff;
+    color: #2c2ab8;
 }
 
 .boolean {
-    color: #b22222;
+    color: #b92b2b;
 }
 
 .null {
-    color: #808080;
+    color: #8f8f8f;
 }
 
 .key {
-    color: #000;
+    color: white;
 }
 
 #jsonarea {

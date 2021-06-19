@@ -1,17 +1,3 @@
-body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-}
-
-.container {
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
 .navbar {
     overflow: hidden;
     background-color: #333;
@@ -58,8 +44,8 @@ ul {
 }
 
 .navbar .active {
-    background-color: #ffbc90;
-    color: white;
+    background-color: #da844b;
+    color: ddd;
 }
 
 .dropdown-content {
@@ -77,9 +63,4 @@ ul {
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-textarea {
-    height: auto;
-    width: auto;
 }

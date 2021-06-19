@@ -18,6 +18,7 @@ export const jsonDisplay = {
         if (newDiv == null) {
             newDiv = document.createElement("pre");
             newDiv.id = "pre";
+            newDiv.title = "JSON Code";
         }
         newDiv.innerHTML = shpretty;
         document.getElementById(jsonDisplay.outputDivID).appendChild(newDiv);
