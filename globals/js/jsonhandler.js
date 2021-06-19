@@ -50,11 +50,11 @@ export const jsonDisplay = {
 
 // Make User Download A JSON File
 export function jsonDownload(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:application/json,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
+    var element = document.createElement("a");
+    element.setAttribute("href", "data:application/json," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
 
-    element.style.display = 'none';
+    element.style.display = "none";
     document.body.appendChild(element);
 
     element.click();

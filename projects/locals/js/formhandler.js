@@ -109,11 +109,10 @@ $("#jsoncopy").click(function() {
 
 $("#jsondownload").click(function() {
     startScanJSON();
-    console.log(json.indentifier);
     if (json.indentifier !== "") {
         jsonDownload(`${json.indentifier}.json`, JSON.stringify(json, null, 2));
     } else {
-        jsonDownload(`unidentified.json`, JSON.stringify(json, null, 2));
+        jsonDownload("unidentified.json", JSON.stringify(json, null, 2));
     }
 });
 
