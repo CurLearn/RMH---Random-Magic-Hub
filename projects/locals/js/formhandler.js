@@ -65,8 +65,10 @@ async function appendValue(s, path) {
         append = append.replaceAll(" ", "");
     else if (s.classList.contains("trimmed"))
         append = append.trim();
-    else if (s.classList.contains("dashed"))
-        append = append.trim().replaceAll(" ", "-");
+    else if (s.classList.contains("dashed")) {
+        const reg = new RegExp("([-])\\1+", "g");
+        append = append.trim().replaceAll(" ", "-").replaceAll(reg, "-");
+    }
 
     if (s.classList.contains("lowercase"))
         append = append.toLowerCase();
