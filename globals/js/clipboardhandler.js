@@ -27,8 +27,7 @@ export function copyTextToClipboard(text) {
         fallbackCopyTextToClipboard(text);
         return;
     }
-    navigator.clipboard.writeText(text).then(function() {
-    }, function(err) {
+    navigator.clipboard.writeText(text).then(function() {}, function(err) {
         console.error('Async: Could not copy text: ', err);
     });
 }

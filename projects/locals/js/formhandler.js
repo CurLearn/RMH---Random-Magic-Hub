@@ -1,10 +1,14 @@
 // jshint esversion: 8
 var json;
 const growers = document.querySelectorAll(".grow-wrap");
-import { jsonDisplay } from "/globals/js/jsonhandler.js";
-import { copyTextToClipboard } from "/globals/js/clipboardhandler.js";
+import {
+    jsonDisplay
+} from "/globals/js/jsonhandler.js";
+import {
+    copyTextToClipboard
+} from "/globals/js/clipboardhandler.js";
 
-$('body').find('*').each(async function () {
+$('body').find('*').each(async function() {
     let tag = $(this).prop("tagName");
     if (tag == "INPUT")
         $(this).prop('title', $(this).attr("class"));
@@ -90,9 +94,5 @@ async function appendValue(s, path) {
             console.error("Append out of Bounds");
     }
 }
-
-$('#jsonarea').on("input", () => {
-
-});
 
 startScanJSON();
