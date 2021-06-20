@@ -35,10 +35,14 @@ if (path.includes("index")) {
     document.getElementById("about").classList.add("active");
 }
 
+//CONFIG:
+let root = "RMH---Random-Magic-Hub";
+// END;
+
 var prefix = "";
 let str = window.location.pathname;
 let r = 1;
-if (str.includes("RMH---Random-Magic-Hub"))
+if (str.includes(root))
     r++;
 
 let count = str.substring(0, (str.lastIndexOf("/") - 1)).split("/").length - r;

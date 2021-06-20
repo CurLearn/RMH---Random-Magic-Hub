@@ -1,7 +1,6 @@
 // jshint esversion: 6
 // JSONHANDLER MODULE: Ver. 0.1a
 // Description: Encodes and Parses json files representing a user's RMT World.
-// TODO: Allow direct downloading of JSON files
 
 // Formatting JSON:
 export const jsonDisplay = {
