@@ -5,7 +5,6 @@
     z-index: -1;
 }
 
-
 #crossfade {
     margin: auto;
     width: 50%;
@@ -13,16 +12,14 @@
 }
 
 #crossfade img {
-    margin-top: 20px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 45%;
     border: 1px solid #ddd;
-    border-radius: 20em;
+    border-radius: 50em;
     box-shadow: 5px 10px rgba(0, 0, 0, 0.014);
     position: absolute;
     margin: auto;
+    margin-top: 5px;
     left: 0;
     right: 0;
     text-align: center;
@@ -68,6 +65,7 @@
     margin-right: 10px;
     padding-right: 25px;
     padding-top: 1px;
+    border: 2px solid #8d3636;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     border-top-left-radius: 50px;
@@ -75,7 +73,6 @@
     width: 50%;
     text-align: right;
     float: right;
-    border: 2px solid #8d3636;
 }
 
 .containerleft {
@@ -86,6 +83,7 @@
     margin-left: 10px;
     padding-left: 25px;
     padding-top: 1px;
+    border: 2px solid #224568;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     border-top-left-radius: 50px;
@@ -93,7 +91,6 @@
     width: 50%;
     text-align: left;
     float: left;
-    border: 2px solid #224568;
 }
 
 .helper-img {
@@ -112,27 +109,17 @@
 .containerbottom {
     color: white;
     background-color: #1f1f1f;
-    padding-bottom: 30px;
-    padding-top: 1px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border: 1px solid #ddd;
+    border-radius: 20em;
     width: 50%;
-    border: 2px solid #ddd;
     padding: 10px;
     margin: auto;
     text-align: center;
     margin-top: 1825px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 45%;
-    border: 1px solid #ddd;
-    border-radius: 20em;
     box-shadow: 5px 10px rgba(0, 0, 0, 0.014);
     position: absolute;
     left: 0;
     right: 0;
-    text-align: center;
 }
