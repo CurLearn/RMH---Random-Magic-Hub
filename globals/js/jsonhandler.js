@@ -18,6 +18,8 @@ export const jsonDisplay = {
             newDiv = document.createElement("pre");
             newDiv.id = "pre";
             newDiv.title = "JSON Code";
+            newDiv.style.overflow = "scroll";
+            newDiv.style.textOverflow = "scroll";
         }
         newDiv.innerHTML = shpretty;
         document.getElementById(jsonDisplay.outputDivID).appendChild(newDiv);
