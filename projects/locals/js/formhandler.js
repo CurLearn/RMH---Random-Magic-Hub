@@ -4,8 +4,10 @@ const growers = document.querySelectorAll(".grow-wrap");
 let prefix = window.prefix;
 
 // Imports
+/* jshint ignore:start */
 let {jsonDisplay, jsonDownload} = await import(prefix + "globals/js/jsonhandler.js");
 let {copyTextToClipboard} = await import(prefix + "globals/js/clipboardhandler.js");
+/* jshint ignore:end */
 
 // Append a value to the json object
 async function appendValue(s, path) {
