@@ -37,7 +37,9 @@ if (path.includes("index")) {
 
 var prefix = "";
 let str = window.location.pathname;
+console.log(str); //TODO: Delete
 let count = str.substring(0, (str.lastIndexOf("/") - 1)).split("/").length - 1;
+console.log(count, str.substring(0, (str.lastIndexOf("/") - 1)).split("/")); //TODO: Delete
 
 for (let i = 0; i < count; i++) {
     prefix += "../";
@@ -47,7 +49,7 @@ $(document).ready(function() {
     $("#navbar").find("a").each(async function() {
         let oldUrl = $(this).attr("href");
         let newUrl = prefix + oldUrl;
-        console.log(prefix + " " + oldUrl);
+        console.log(prefix + " " + oldUrl); //TODO: Delete
         $(this).attr("href", newUrl);
     });
 });
