@@ -29,17 +29,16 @@ document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterbegin", inject
 const path = window.location.pathname.toLowerCase();
 if (path.includes("index")) {
     document.getElementById("home").classList.add("active");
-}
-else if (path.includes("projects")) {
+} else if (path.includes("projects")) {
     document.getElementById("projects").classList.add("active");
-}
-else if (path.includes("about")) {
+} else if (path.includes("about")) {
     document.getElementById("about").classList.add("active");
 }
 
 var prefix = "";
 let str = window.location.pathname;
-let count = str.substring(0, (str.lastIndexOf("/") - 1)).split("/").length;
+let count = str.substring(0, (str.lastIndexOf("/") - 1)).split("/").length - 1;
+
 for (let i = 0; i < count; i++) {
     prefix += "../";
 }
@@ -48,6 +47,7 @@ $(document).ready(function() {
     $("#navbar").find("a").each(async function() {
         let oldUrl = $(this).attr("href");
         let newUrl = prefix + oldUrl;
+        console.log(prefix + " " + oldUrl);
         $(this).attr("href", newUrl);
     });
 });
