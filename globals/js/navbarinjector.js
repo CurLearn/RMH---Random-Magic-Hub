@@ -8,7 +8,7 @@
     <div class="navbar" id="navbar">
         <a href="index.html" id="home">Home</a>
         <div class="dropdown">
-            <button class="dropbtn" id="projects" onclick="window.location.href='projects/main.html'">Projects</button>
+            <button class="dropbtn" id="projects">Projects</button>
             <div class="dropdown-content">
                 <a href="projects/source/ActionEdit/ae.html">ActionEdit</a>
                 <a href="projects/source/EntityEdit/ee.html">EntityEdit</a>
@@ -23,7 +23,7 @@
 */
 
 // Inject HTML Code
-const inject = "<!--Navbar--> <div class=\"navbar\" id=\"navbar\"> <a href=\"index.html\" id=\"home\">Home<\/a> <div class=\"dropdown\"> <button class=\"dropbtn\" id=\"projects\" onclick=\"window.location.href=\'projects\/main.html\'\">Projects<\/button> <div class=\"dropdown-content\"> <a href=\"projects\/source\/ActionEdit\/ae.html\">ActionEdit<\/a> <a href=\"projects\/source\/EntityEdit\/ee.html\">EntityEdit<\/a> <a href=\"projects\/source\/GenomeEdit\/ge.html\">GenomeEdit<\/a> <a href=\"projects\/source\/ItemEdit\/ie.html\">ItemEdit<\/a> <a href=\"projects\/source\/MagicEdit\/me.html\">MagicEdit<\/a> <a href=\"projects\/source\/SkillEdit\/se.html\">SkillEdit<\/a> <\/div> <\/div> <a href=\"misc\/about.html\" id=\"about\">About<\/a> <\/div>";
+const inject = "<!--Navbar--> <div class=\"navbar\" id=\"navbar\"> <a href=\"index.html\" id=\"home\">Home<\/a> <div class=\"dropdown\"> <button class=\"dropbtn\" id=\"projects\">Projects<\/button> <div class=\"dropdown-content\"> <a href=\"projects\/source\/ActionEdit\/ae.html\">ActionEdit<\/a> <a href=\"projects\/source\/EntityEdit\/ee.html\">EntityEdit<\/a> <a href=\"projects\/source\/GenomeEdit\/ge.html\">GenomeEdit<\/a> <a href=\"projects\/source\/ItemEdit\/ie.html\">ItemEdit<\/a> <a href=\"projects\/source\/MagicEdit\/me.html\">MagicEdit<\/a> <a href=\"projects\/source\/SkillEdit\/se.html\">SkillEdit<\/a> <\/div> <\/div> <a href=\"misc\/about.html\" id=\"about\">About<\/a> <\/div>";
 document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterbegin", inject);
 
 const path = window.location.pathname.toLowerCase();
@@ -37,10 +37,11 @@ if (path.includes("index")) {
 
 var prefix = "";
 let str = window.location.pathname;
-console.log(str); //TODO: Delete
-let count = str.substring(0, (str.lastIndexOf("/") - 1)).split("/").length - 1;
-console.log(count, str.substring(0, (str.lastIndexOf("/") - 1)).split("/")); //TODO: Delete
+let r = 1;
+if (str.includes("RMH---Random-Magic-Hub"))
+    r++;
 
+let count = str.substring(0, (str.lastIndexOf("/") - 1)).split("/").length - r;
 for (let i = 0; i < count; i++) {
     prefix += "../";
 }
@@ -49,7 +50,13 @@ $(document).ready(function() {
     $("#navbar").find("a").each(async function() {
         let oldUrl = $(this).attr("href");
         let newUrl = prefix + oldUrl;
-        console.log(prefix + " " + oldUrl); //TODO: Delete
         $(this).attr("href", newUrl);
+    });
+    $('.dropbtn').each(function(i, obj) {
+        if (obj.id === "projects") {
+            $(obj).click(function() {
+                window.location.href = prefix + 'projects/main.html';
+            });
+        }
     });
 });
