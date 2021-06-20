@@ -1,13 +1,11 @@
 // jshint esversion: 8
 var json;
 const growers = document.querySelectorAll(".grow-wrap");
-import {
-    jsonDisplay,
-    jsonDownload
-} from "/globals/js/jsonhandler.js";
-import {
-    copyTextToClipboard
-} from "/globals/js/clipboardhandler.js";
+let prefix = window.prefix;
+
+// Imports
+let {jsonDisplay, jsonDownload} = await import(prefix + "globals/js/jsonhandler.js");
+let {copyTextToClipboard} = await import(prefix + "globals/js/clipboardhandler.js");
 
 // Append a value to the json object
 async function appendValue(s, path) {

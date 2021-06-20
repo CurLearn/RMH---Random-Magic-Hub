@@ -50,6 +50,7 @@ for (let i = 0; i < count; i++) {
     prefix += "../";
 }
 
+window.prefix = prefix;
 $(document).ready(function() {
     $("#navbar").find("a").each(async function() {
         let oldUrl = $(this).attr("href");
