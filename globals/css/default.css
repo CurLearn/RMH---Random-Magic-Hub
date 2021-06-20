@@ -18,9 +18,9 @@ button {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    background-color: #d1702f;
+    background-color: #d97c3f;
     color: white;
-    border: 2px solid #d1702f;
+    border: 2px solid #d97c3f;
 }
 
 button:hover {
