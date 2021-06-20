@@ -42,8 +42,9 @@ let root = "RMH---Random-Magic-Hub";
 var prefix = "";
 let str = window.location.pathname;
 let r = 1;
-if (str.includes(root))
+if (str.includes(root)) {
     r++;
+}
 
 let count = str.substring(0, (str.lastIndexOf("/") - 1)).split("/").length - r;
 for (let i = 0; i < count; i++) {
@@ -57,10 +58,10 @@ $(document).ready(function() {
         let newUrl = prefix + oldUrl;
         $(this).attr("href", newUrl);
     });
-    $('.dropbtn').each(function(i, obj) {
+    $(".dropbtn").each(function(i, obj) {
         if (obj.id === "projects") {
             $(obj).click(function() {
-                window.location.href = prefix + 'projects/main.html';
+                window.location.href = prefix + "projects/main.html";
             });
         }
     });
