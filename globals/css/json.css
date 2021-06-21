@@ -1,7 +1,18 @@
 pre {
     outline: 1px solid #ccc;
     padding: 5px;
-    margin: 5px;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    background-color: #1b1b1b;
+    color: white;
+    resize: vertical;
+    overflow: auto;
+    height: fit-content;
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .string {

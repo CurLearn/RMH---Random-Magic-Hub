@@ -135,3 +135,34 @@ $("#jsondownload").click(function() {
 
 // Start scan on Load:
 startScanJSON();
+
+var scrollHeight = $(document).height();
+var scrollPos = $(window).height() + $(window).scrollTop();
+while (((scrollHeight - 1) >= scrollPos) / scrollHeight == 0) {
+    scrollHeight = $(document).height();
+    scrollPos = $(window).height() + $(window).scrollTop();
+    document.getElementsByTagName("BODY")[0].insertAdjacentHTML("beforeend", "<br>");
+}
+
+//Infinite Scroll
+$(window).on("scroll", function() {
+    //page height
+    scrollHeight = $(document).height();
+    //scroll position
+    scrollPos = $(window).height() + $(window).scrollTop();
+    // fire if the scroll position is 300 pixels above the bottom of the page
+    if (((scrollHeight - 300) >= scrollPos) / scrollHeight == 0) {
+        document.getElementsByTagName("BODY")[0].insertAdjacentHTML("beforeend", "<br>");
+    }
+});
+
+$(window).bind('mousewheel', function(e){
+    //page height
+    scrollHeight = $(document).height();
+    //scroll position
+    scrollPos = $(window).height() + $(window).scrollTop();
+    // fire if the scroll position is 300 pixels above the bottom of the page
+    if (((scrollHeight - 300) >= scrollPos) / scrollHeight == 0) {
+        document.getElementsByTagName("BODY")[0].insertAdjacentHTML("beforeend", "<br>");
+    }
+});
