@@ -144,7 +144,7 @@ while (((scrollHeight - 1) >= scrollPos) / scrollHeight == 0) {
     document.getElementsByTagName("BODY")[0].insertAdjacentHTML("beforeend", "<br>");
 }
 
-//Infinite Scroll
+//Infinite Scroll 1
 $(window).on("scroll", function() {
     //page height
     scrollHeight = $(document).height();
@@ -156,7 +156,8 @@ $(window).on("scroll", function() {
     }
 });
 
-$(window).bind('mousewheel', function(e){
+// Infinite Scroll 2
+$(window).bind('mousewheel', function(e) {
     //page height
     scrollHeight = $(document).height();
     //scroll position
