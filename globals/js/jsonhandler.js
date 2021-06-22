@@ -63,3 +63,53 @@ export function jsonDownload(filename, text) {
 
     document.body.removeChild(element);
 }
+
+// Formatting JSON NEW:
+export const jsonHandler = {
+    append: null,
+    subscribers: [],
+
+    buildJSON(input, outputID) {
+        var json = JSON.stringify(JSON.parse(input), null, 2);
+        append = (jsonHandler.append === null) ? document.getElementById(outputID).getElementsByTagName("pre")[0] : jsonHandler.append;
+
+        // Check if Div is still NULL
+        if (append === null) {
+            append = document.createElement("pre");
+            append.id = "pre";
+            append.title = "JSON Code";
+            append.style.overflow = "scroll";
+            append.style.textOverflow = "scroll";
+        }
+
+        // Scan the JSON
+        scanJSON(json, append);
+        document.getElementById(outputID).appendChild(append);
+    },
+
+    // Builds a new JSON view onto a div;
+    scanJSON(json, append) {
+
+    },
+
+    // Highlights a part of the JSON
+    highlightJSON(json) {
+        return "";
+    },
+
+    // Modify a part of the existing JSON view
+    modifyJSON(key, value) {
+
+    },
+
+    // Called when a key value pair was modified from within the view
+    callModifyEvent(key, value) {
+        for (const subscriber in subscribers) {
+            try {
+                subscriber(key, value);
+            } catch (e) {
+                // Ignored
+            }
+        }
+    }
+};
