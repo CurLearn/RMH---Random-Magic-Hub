@@ -7,7 +7,8 @@ let prefix = window.prefix;
 /* jshint ignore:start */
 let {
     jsonDisplay,
-    jsonDownload
+    jsonDownload,
+    jsonHandler
 } = await import(
     prefix + "globals/js/jsonhandler.js"
 );
@@ -98,9 +99,10 @@ function startScanJSON() {
         scanJSON(this);
     });
 
-    jsonDisplay.jsonstring = JSON.stringify(json);
-    jsonDisplay.outputDivID = "jsonarea";
-    jsonDisplay.outputPretty(JSON.stringify(json));
+    jsonHandler.buildJSON(json, "jsonarea");
+    // jsonDisplay.jsonstring = JSON.stringify(json);
+    // jsonDisplay.outputDivID = "jsonarea";
+    // jsonDisplay.outputPretty(JSON.stringify(json));
 }
 
 // Scan on editing of input areas

@@ -66,15 +66,13 @@ export function jsonDownload(filename, text) {
 
 // Formatting JSON NEW:
 export const jsonHandler = {
-    append: null,
     subscribers: [],
 
     buildJSON(input, outputID) {
-        var json = JSON.stringify(JSON.parse(input), null, 2);
-        append = (jsonHandler.append === null) ? document.getElementById(outputID).getElementsByTagName("pre")[0] : jsonHandler.append;
+        let append = document.getElementById(outputID).getElementsByTagName("pre")[0];
 
         // Check if Div is still NULL
-        if (append === null) {
+        if (typeof append === "undefined") {
             append = document.createElement("pre");
             append.id = "pre";
             append.title = "JSON Code";
@@ -82,14 +80,41 @@ export const jsonHandler = {
             append.style.textOverflow = "scroll";
         }
 
-        // Scan the JSON
-        scanJSON(json, append);
+        $("pre").empty(); // TODO: Remove.
+
+        // TODO: Allow for modification of json instead of rescanning.
+        jsonHandler.scanJSON(input, append, "");
         document.getElementById(outputID).appendChild(append);
     },
 
     // Builds a new JSON view onto a div;
-    scanJSON(json, append) {
+    scanJSON(json, append, prefix) {
+        console.log(json);
 
+        let obj;
+        const keys = Object.keys(json);
+        const values = Object.values(json);
+
+        // TODO: Split KEY and VALUE into two divs that don't create a new line.
+        // TODO: Syntax highlight the JSON: String, Integer, Float, Boolean, Null, UUID, etc.
+        for (var i = 0; i < keys.length; i++) {
+            if (typeof values[i] == "object") {
+                obj = document.createElement("div");
+                obj.innerText = prefix + `${keys[i]} {`;
+                obj.id = `${json[keys[i]]}`;
+                obj.contentEditable = true;
+
+                append.appendChild(obj);
+                jsonHandler.scanJSON(json[keys[i]], append, (prefix + "  "));
+            } else {
+                obj = document.createElement("div");
+                obj.innerText = prefix + `${keys[i]}: ${values[i]}`;
+                obj.id = `${json[keys[i]]}`;
+                obj.contentEditable = true;
+
+                append.appendChild(obj);
+            }
+        }
     },
 
     // Highlights a part of the JSON
@@ -99,7 +124,7 @@ export const jsonHandler = {
 
     // Modify a part of the existing JSON view
     modifyJSON(key, value) {
-
+        // TODO: Call modify on modification of a key/value div.
     },
 
     // Called when a key value pair was modified from within the view
@@ -113,3 +138,5 @@ export const jsonHandler = {
         }
     }
 };
+
+// TODO: Start work on JSON Config Handler.
