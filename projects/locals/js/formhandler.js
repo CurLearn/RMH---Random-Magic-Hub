@@ -99,10 +99,8 @@ function startScanJSON() {
         scanJSON(this);
     });
 
+    // TODO: Stop rebuilding each edit
     jsonHandler.buildJSON(json, "jsonarea");
-    // jsonDisplay.jsonstring = JSON.stringify(json);
-    // jsonDisplay.outputDivID = "jsonarea";
-    // jsonDisplay.outputPretty(JSON.stringify(json));
 }
 
 // Scan on editing of input areas
