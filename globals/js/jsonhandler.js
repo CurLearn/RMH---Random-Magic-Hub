@@ -41,17 +41,17 @@ export const jsonHandler = {
 
     // Builds a new JSON view onto a div;
     scanJSON(json, append, prefix) {
-        console.log(json);
-
-        let con;
+        let con, highlight;
         const keys = Object.keys(json);
         const values = Object.values(json);
+        console.log(json, keys, values);
 
         // TODO: Syntax highlight the JSON: String, Integer, Float, Boolean, Null, UUID, etc.
         for (var i = 0; i < keys.length; i++) {
+            highlight = "highlight-undefined";
             if (typeof values[i] == "object") {
                 con = document.createElement("div");
-                con.innerHTML = prefix + `<span id="${keys[i]}" class="key">${keys[i]}</span> {`;
+                con.innerHTML = prefix + `<span id="${keys[i]}" class="key highlight-object">${keys[i]}</span> {`;
                 con.id = `${keys[i]}-c`;
                 con.contentEditable = true;
 
@@ -62,7 +62,16 @@ export const jsonHandler = {
                 jsonHandler.scanJSON(json[keys[i]], append, (prefix + "  "));
             } else {
                 con = document.createElement("div");
-                con.innerHTML = prefix + `<span id="${keys[i]}" class="key">${keys[i]}</span>: <span id="${keys[i]}-v" class="string">${values[i]}</span>`;
+
+                try {
+                    console.log(keys[i]);
+                    let classList = document.getElementById(keys[i]).classList;
+                    highlight = `highlight-${classList[classList.length - 1]}`; // TODO: Make highlight class always last index
+                } catch (e) {
+                    // Ignored
+                }
+
+                con.innerHTML = prefix + `<span id="${keys[i]}" class="key highlight-key">${keys[i]}</span>: <span id="${keys[i]}-v ${highlight}" class="string">${values[i]}</span>`;
                 con.id = `${keys[i]}-c`;
                 con.contentEditable = true;
 
