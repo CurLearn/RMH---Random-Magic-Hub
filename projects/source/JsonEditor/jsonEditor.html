@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
     <!--Title-->
-    <title>GenomeEdit</title>
+    <title>JsonEditor</title>
 
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,23 +23,29 @@
 
     <!--Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Random Magic Theory's GenomeEdit Project.">
+    <meta name="description" content="JsonEditor Project.">
     <meta name="theme-color" content="#333333">
 </head>
 
 <body>
     <!--Container-->
     <div class="container">
-        <h1>GenomeEdit</h1>
-        <p>Version: 0.15b</p>
+        <h1>JsonEditor</h1>
+        <p>Version: 0.3b</p>
         <p>Status: W.I.P.</p>
 
         <form id="form">
             <br><label>Identifier: </label>
-            <br><input id="indentifier" class="dashed lowercase" placeholder="Indentifier"></input>
+            <br><input id="indentifier" class="dashed lowercase string" placeholder="Identifier"></input>
             <br>
             <br><label>UUID: </label>
-            <br><input id="uuid" placeholder="UUID" readonly></input>
+            <br><input id="uuid" class="string" placeholder="UUID" readonly></input>
+            <div id="placeholder">
+                <br>
+                <h2>Placeholder</h2>
+                <label>Sub-Placeholder: </label>
+                <br><input id="sub-placeholder" class="mashed uppercase string" placeholder="Sub-Placeholder"></input>
+            </div>
         </form>
     </div>
     <div class="subcontainer">
@@ -55,7 +61,7 @@
     <script type="module" src="../../../globals/js/jsonhandler.js" async></script>
     <script type="module" src="../../../globals/js/clipboardhandler.js" async></script>
     <script type="module" src="../../locals/js/formhandler.js" async></script>
-    <script type="text/javascript" src="js/ge.js" async></script>
+    <script type="text/javascript" src="js/jsonEditor.js" async></script>
 </body>
 
 </html>

@@ -15,23 +15,27 @@ pre {
     margin-right: 5px;
 }
 
-.string {
+.highlight-string {
     color: #2bad2b;
 }
 
-.number {
+.highlight-number {
     color: #2c2ab8;
 }
 
-.boolean {
+.highlight-boolean {
     color: #b92b2b;
 }
 
-.null {
+.highlight-null {
     color: #8f8f8f;
 }
 
-.key {
+.highlight-key {
+    color: white;
+}
+
+.highlight-object {
     color: white;
 }
 

@@ -2,55 +2,7 @@
 // JSONHANDLER MODULE: Ver. 0.1a
 // Description: Encodes and Parses json files representing a user's RMT World.
 
-// Formatting JSON:
-export const jsonDisplay = {
-
-    jsonstring: "",
-    outputDivID: "",
-
-    outputPretty(jsonstring) {
-        jsonstring = jsonstring === "" ? jsonDisplay.jsonstring : jsonstring;
-        var pretty = JSON.stringify(JSON.parse(jsonstring), null, 2);
-        var shpretty = jsonDisplay.syntaxHighlight(pretty);
-        var newDiv;
-        newDiv = document.getElementById(jsonDisplay.outputDivID).getElementsByTagName("pre")[0];
-        if (newDiv == null) {
-            newDiv = document.createElement("pre");
-            newDiv.id = "pre";
-            newDiv.title = "JSON Code";
-            newDiv.style.overflow = "scroll";
-            newDiv.style.textOverflow = "scroll";
-        }
-        newDiv.innerHTML = shpretty;
-        document.getElementById(jsonDisplay.outputDivID).appendChild(newDiv);
-    },
-
-    syntaxHighlight(json) {
-
-        if (typeof json != "string") {
-            json = JSON.stringify(json, undefined, 2);
-        }
-
-        json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
-            var cls = "number";
-            if (/^"/.test(match)) {
-                if (/:$/.test(match)) {
-                    cls = "key";
-                } else {
-                    cls = "string";
-                }
-            } else if (/true|false/.test(match)) {
-                cls = "boolean";
-            } else if (/null/.test(match)) {
-                cls = "null";
-            }
-            return "<span class=\"" + cls + "\">" + match + "</span>";
-        });
-    }
-};
-
-// Make User Download A JSON File
+// JSON DOWNLOAD:
 export function jsonDownload(filename, text) {
     var element = document.createElement("a");
     element.setAttribute("href", "data:application/json," + encodeURIComponent(text));
@@ -64,17 +16,15 @@ export function jsonDownload(filename, text) {
     document.body.removeChild(element);
 }
 
-// Formatting JSON NEW:
+// JSON FORMAT:
 export const jsonHandler = {
-    append: null,
     subscribers: [],
 
     buildJSON(input, outputID) {
-        var json = JSON.stringify(JSON.parse(input), null, 2);
-        append = (jsonHandler.append === null) ? document.getElementById(outputID).getElementsByTagName("pre")[0] : jsonHandler.append;
+        let append = document.getElementById(outputID).getElementsByTagName("pre")[0];
 
         // Check if Div is still NULL
-        if (append === null) {
+        if (typeof append === "undefined") {
             append = document.createElement("pre");
             append.id = "pre";
             append.title = "JSON Code";
@@ -82,24 +32,94 @@ export const jsonHandler = {
             append.style.textOverflow = "scroll";
         }
 
-        // Scan the JSON
-        scanJSON(json, append);
+        $("pre").empty(); // TODO: Remove.
+
+        // TODO: Allow for modification of json instead of rescanning.
+        jsonHandler.scanJSON(input, append, "");
         document.getElementById(outputID).appendChild(append);
     },
 
     // Builds a new JSON view onto a div;
-    scanJSON(json, append) {
+    async scanJSON(json, append, prefix) {
+        let con, highlight;
+        const keys = Object.keys(json);
+        const values = Object.values(json);
+        console.log(json, keys, values);
 
+        // TODO: Syntax highlight the JSON: String, Integer, Float, Boolean, Null, UUID, etc.
+        for (var i = 0; i < keys.length; i++) {
+            highlight = "highlight-undefined";
+            if (typeof values[i] == "object") {
+                con = document.createElement("div");
+                con.innerHTML = prefix + `<span id="${keys[i]}" class="highlight-object">${keys[i]}</span> {`;
+                con.id = `${keys[i]}-c`;
+                con.contentEditable = true;
+
+                append.appendChild(con);
+                jsonHandler.highlightValue(keys[i]);
+
+                // Next Scan
+                jsonHandler.scanJSON(json[keys[i]], append, (prefix + "  "));
+            } else {
+                con = document.createElement("div");
+
+                try {
+                    console.log(keys[i]);
+                    let classList = document.getElementById(keys[i]).classList;
+                    highlight = `highlight-${classList[classList.length - 1]}`; // TODO: Make highlight class always last index
+                } catch (e) {
+                    // Ignored
+                }
+
+                con.innerHTML = prefix + `<span id="${keys[i]}" class="highlight-key">${keys[i]}</span>: <span id="${keys[i]}-v" class="${highlight}">${values[i]}</span>`;
+                con.id = `${keys[i]}-c`;
+                con.contentEditable = true;
+
+                await append.appendChild(con);
+                jsonHandler.highlightValue(keys[i]);
+            }
+        }
     },
 
     // Highlights a part of the JSON
-    highlightJSON(json) {
-        return "";
+    highlightValue(key) {
+        let i = `${key}-v`;
+        let target = document.getElementById(i);
+        try {
+            if (target.classList.contains("highlight-string")) {
+                target.innerText = "\"" + target.innerText + "\"";
+            }
+        } catch (e) {
+            // Ignored
+        }
     },
 
     // Modify a part of the existing JSON view
     modifyJSON(key, value) {
+        if (typeof $(key) !== "undefined") {
+            $(key).innerText = value; // TODO: Add highlighting
 
+            // Re-add highlighting in case of type switch
+            $(key).removeClass();
+            jsonHandler.highlightValue(key);
+            let checks = jsonHandler.regexMatch(key);
+            let failed = [];
+            for (var i = 0; i < checks.length; i++) {
+                if (checks[i] === false) {
+                    // Regex Check Failed
+                    failed.push(checks[i]);
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    regexMatch(key) {
+        // TODO: Implement
+        return [];
     },
 
     // Called when a key value pair was modified from within the view
@@ -113,3 +133,5 @@ export const jsonHandler = {
         }
     }
 };
+
+// TODO: Start work on JSON Config Handler.
