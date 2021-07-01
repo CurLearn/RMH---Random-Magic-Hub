@@ -173,5 +173,11 @@ function sendData(data) {
 }
 
 $("#jsonsend").click(function() {
-    sendData(JSON.stringify(json));
+    let stringifyJson = JSON.stringify(json);
+    if (stringifyJson.length > 15000) {
+        alert("Can't send JSON larger than 15.000 characters (use manual upload instead).");
+        return;
+    }
+
+    sendData(stringifyJson);
 });
