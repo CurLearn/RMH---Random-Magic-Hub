@@ -94,7 +94,6 @@ async function scanJSON(s, path = []) {
 // Initializes the script to scan for json-addable objects
 function startScanJSON() {
     json = {};
-    console.clear();
     $("#form").children().each(async function() {
         scanJSON(this);
     });
@@ -166,4 +165,13 @@ $(window).bind('mousewheel', function(e) {
     if (((scrollHeight - 300) >= scrollPos) / scrollHeight == 0) {
         document.getElementsByTagName("BODY")[0].insertAdjacentHTML("beforeend", "<br>");
     }
+});
+
+// Send data
+function sendData(data) {
+    location.href = `../JsonEditor/JsonEditor.html?${data}`;
+}
+
+$("#jsonsend").click(function() {
+    sendData(JSON.stringify(json));
 });
