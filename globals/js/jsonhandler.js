@@ -40,7 +40,7 @@ export const jsonHandler = {
     },
 
     // Builds a new JSON view onto a div;
-    scanJSON(json, append, prefix) {
+    async scanJSON(json, append, prefix) {
         let con, highlight;
         const keys = Object.keys(json);
         const values = Object.values(json);
@@ -51,7 +51,7 @@ export const jsonHandler = {
             highlight = "highlight-undefined";
             if (typeof values[i] == "object") {
                 con = document.createElement("div");
-                con.innerHTML = prefix + `<span id="${keys[i]}" class="key highlight-object">${keys[i]}</span> {`;
+                con.innerHTML = prefix + `<span id="${keys[i]}" class="highlight-object">${keys[i]}</span> {`;
                 con.id = `${keys[i]}-c`;
                 con.contentEditable = true;
 
@@ -71,11 +71,11 @@ export const jsonHandler = {
                     // Ignored
                 }
 
-                con.innerHTML = prefix + `<span id="${keys[i]}" class="key highlight-key">${keys[i]}</span>: <span id="${keys[i]}-v ${highlight}" class="string">${values[i]}</span>`;
+                con.innerHTML = prefix + `<span id="${keys[i]}" class="highlight-key">${keys[i]}</span>: <span id="${keys[i]}-v" class="${highlight}">${values[i]}</span>`;
                 con.id = `${keys[i]}-c`;
                 con.contentEditable = true;
 
-                append.appendChild(con);
+                await append.appendChild(con);
                 jsonHandler.highlightValue(keys[i]);
             }
         }
@@ -83,7 +83,15 @@ export const jsonHandler = {
 
     // Highlights a part of the JSON
     highlightValue(key) {
-        // TODO: Implement
+        let i = `${key}-v`;
+        let target = document.getElementById(i);
+        try {
+            if (target.classList.contains("highlight-string")) {
+                target.innerText = "\"" + target.innerText + "\"";
+            }
+        } catch (e) {
+            // Ignored
+        }
     },
 
     // Modify a part of the existing JSON view
@@ -94,10 +102,24 @@ export const jsonHandler = {
             // Re-add highlighting in case of type switch
             $(key).removeClass();
             jsonHandler.highlightValue(key);
+            let checks = jsonHandler.regexMatch(key);
+            let failed = [];
+            for (var i = 0; i < checks.length; i++) {
+                if (checks[i] === false) {
+                    // Regex Check Failed
+                    failed.push(checks[i]);
+                }
+            }
+
             return true;
         } else {
             return false;
         }
+    },
+
+    regexMatch(key) {
+        // TODO: Implement
+        return [];
     },
 
     // Called when a key value pair was modified from within the view
