@@ -10,12 +10,8 @@
         <div class="dropdown">
             <button class="dropbtn" id="projects">Projects</button>
             <div class="dropdown-content">
-                <a href="projects/source/ActionEdit/ae.html">ActionEdit</a>
-                <a href="projects/source/EntityEdit/ee.html">EntityEdit</a>
-                <a href="projects/source/GenomeEdit/ge.html">GenomeEdit</a>
-                <a href="projects/source/ItemEdit/ie.html">ItemEdit</a>
-                <a href="projects/source/MagicEdit/me.html">MagicEdit</a>
-                <a href="projects/source/SkillEdit/se.html">SkillEdit</a>
+                <a href="projects/source/JsonEditor/JsonEditor.html">JsonEditor</a>
+                <a href="projects/source/JsonConfigEditor/JsonConfigEditor.html">JsonConfigEditor</a>
             </div>
         </div>
         <a href="misc/about.html" id="about">About</a>
@@ -23,7 +19,7 @@
 */
 
 // Inject HTML Code
-const inject = "<!--Navbar--> <div class=\"navbar\" id=\"navbar\"> <a href=\"index.html\" id=\"home\">Home<\/a> <div class=\"dropdown\"> <button class=\"dropbtn\" id=\"projects\">Projects<\/button> <div class=\"dropdown-content\"> <a href=\"projects\/source\/ActionEdit\/ae.html\">ActionEdit<\/a> <a href=\"projects\/source\/EntityEdit\/ee.html\">EntityEdit<\/a> <a href=\"projects\/source\/GenomeEdit\/ge.html\">GenomeEdit<\/a> <a href=\"projects\/source\/ItemEdit\/ie.html\">ItemEdit<\/a> <a href=\"projects\/source\/MagicEdit\/me.html\">MagicEdit<\/a> <a href=\"projects\/source\/SkillEdit\/se.html\">SkillEdit<\/a> <\/div> <\/div> <a href=\"misc\/about.html\" id=\"about\">About<\/a> <\/div>";
+const inject = "<!--Navbar--> <div class=\"navbar\" id=\"navbar\"> <a href=\"index.html\" id=\"home\">Home<\/a> <div class=\"dropdown\"> <button class=\"dropbtn\" id=\"projects\">Projects<\/button> <div class=\"dropdown-content\"> <a href=\"projects\/source\/JsonEditor\/JsonEditor.html\">JsonEditor<\/a> <a href=\"projects\/source\/JsonConfigEditor\/JsonConfigEditor.html\">JsonConfigEditor<\/a> <\/div> <\/div> <a href=\"misc\/about.html\" id=\"about\">About<\/a> <\/div>";
 document.getElementsByTagName("BODY")[0].insertAdjacentHTML("afterbegin", inject);
 
 const path = window.location.pathname.toLowerCase();
