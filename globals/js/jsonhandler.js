@@ -44,7 +44,6 @@ export const jsonHandler = {
         let con, highlight;
         const keys = Object.keys(json);
         const values = Object.values(json);
-        console.log(json, keys, values);
 
         // TODO: Syntax highlight the JSON: String, Integer, Float, Boolean, Null, UUID, etc.
         for (var i = 0; i < keys.length; i++) {
@@ -64,7 +63,6 @@ export const jsonHandler = {
                 con = document.createElement("div");
 
                 try {
-                    console.log(keys[i]);
                     let classList = document.getElementById(keys[i]).classList;
                     highlight = `highlight-${classList[classList.length - 1]}`; // TODO: Make highlight class always last index
                 } catch (e) {
@@ -124,11 +122,14 @@ export const jsonHandler = {
 
     // Called when a key value pair was modified from within the view
     callModifyEvent(key, value) {
+        let subscribers = jsonHandler.subscribers;
         for (const subscriber in subscribers) {
-            try {
-                subscriber(key, value);
-            } catch (e) {
-                // Ignored
+            if (Object.prototype.hasOwnProperty.call(subscribers, subscriber)) {
+                try {
+                    subscriber(key, value);
+                } catch (e) {
+                    // Ignored
+                }
             }
         }
     }
